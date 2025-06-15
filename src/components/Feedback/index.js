@@ -5,25 +5,22 @@ import './index.css'
 
 class Feedback extends Component {
   state = {
-    isFeedbackSelected: false,
+    isFeedbackSelected: true,
   }
 
   renderThankYouScreen = () => {
     const {resources} = this.props
-    const {loveEmojiUrl} = resources 
-    
+    const {loveEmojiUrl} = resources
+
     return (
-        <div>
-            <img 
-                src={loveEmojiUrl}
-                alt="love emoji"
-            />
-            <h1> Thank you! </h1>
-            <p> We will use your feedback 
-              to improve our customer support 
-              performance.
-            </p>
-        </div>
+      <div className="thank-you-container">
+        <img src={loveEmojiUrl} alt="love emoji" className="love-emoji" />
+        <h1 className="thank-you"> Thank you! </h1>
+        <p className="description">
+          {' '}
+          We will use your feedback to improve our customer support performance.
+        </p>
+      </div>
     )
   }
 
@@ -32,15 +29,17 @@ class Feedback extends Component {
     const {emojis} = resources
 
     return (
-      <div>
-        <h1>How satisfied are you with our customer support performance?</h1>
-        <ul>
+      <div className="feedback-question-container">
+        <h1 className="feedback-question">
+          How satisfied are you with our customer support performance?
+        </h1>
+        <ul className="emojis-list">
           {emojis.map(emoji => (
             <li key={emoji.id}>
-              <button type="button">
-                <img src={emoji.imageUrl} alt={emoji.name} />
+              <button type="button" className="emoji-btn">
+                <img src={emoji.imageUrl} alt={emoji.name} className="emoji" />
                 <br />
-                <p>{emoji.name}</p>
+                <span className="emoji-name">{emoji.name}</span>
               </button>
             </li>
           ))}
@@ -52,8 +51,8 @@ class Feedback extends Component {
   render() {
     const {isFeedbackSelected} = this.state
     return (
-      <div>
-        <div>
+      <div className="app-container">
+        <div className="feedback-card">
           {isFeedbackSelected
             ? this.renderThankYouScreen()
             : this.renderFeedbackQuestion()}
