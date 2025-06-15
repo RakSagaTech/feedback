@@ -1,7 +1,6 @@
 /* Write your CSS code here. */
 
 .app-container {
-  border: 2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;

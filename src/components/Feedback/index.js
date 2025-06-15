@@ -5,7 +5,7 @@ import './index.css'
 
 class Feedback extends Component {
   state = {
-    isFeedbackSelected: true,
+    isFeedbackSelected: false,
   }
 
   renderThankYouScreen = () => {
@@ -24,6 +24,10 @@ class Feedback extends Component {
     )
   }
 
+  onClickEmoji = () =>{
+    this.setState(prevState => ({isFeedbackSelected: !prevState.isFeedbackSelected}))
+  }
+
   renderFeedbackQuestion = () => {
     const {resources} = this.props
     const {emojis} = resources
@@ -36,7 +40,7 @@ class Feedback extends Component {
         <ul className="emojis-list">
           {emojis.map(emoji => (
             <li key={emoji.id}>
-              <button type="button" className="emoji-btn">
+              <button type="button" className="emoji-btn" onClick={this.onClickEmoji}>
                 <img src={emoji.imageUrl} alt={emoji.name} className="emoji" />
                 <br />
                 <span className="emoji-name">{emoji.name}</span>
